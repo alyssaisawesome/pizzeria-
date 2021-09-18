@@ -1,0 +1,146 @@
+<html>
+    <head>
+    <title>Pizzeria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+</head>
+
+<body class="bg">
+    <div class="topnav">
+        <a class="active" href="#">Pizzeria</a>
+        <div class="topnav-right">
+         <a href="#viewblock">View Menu</a>
+         <a href="#addTopings">Add Menu</a>
+        </div>
+    </div>
+
+    <center>
+    <h1 class="whitetext">Cat's Pizzeria</h1>
+
+    <h3 class="whitetext">"Fresh out of the oven"</h3>
+
+    <img src="Food-Pizza-Basil-Tomato.jpg" style="height:500px; width:500px; border-radius:50%;"></img>
+</center>
+
+    <div class="flex-container">
+        <div class="newRow flex-child" id="addTopings">
+            <div class="block1">
+                <input id="add_suggestion" placeholder="Add comment"> 
+                <div class="slidecontainer">
+                    <h4 class="whitetext">Amount of stars:</h4>
+                    <div class="flex-container">
+                        <output class="whitetext" style="float:left;margin-right: 10px;">slide to update</output>
+                        <input id="sliderstars" type="range" value="3" min="1" max="5" oninput="this.previousElementSibling.value = this.value">          
+                    </div>
+                  </div>
+                <input id="add_name" placeholder="Add your name">
+                <br>
+                <br>
+                <br>
+                <button class="btn btn-success" onclick="add_suggestion()">Add suggestion</button>
+                <br>
+                <br>
+                <br>
+                <row>
+
+                    <select name="Options" id="options">
+                        <option value="vegeterian">Vegeterian Pizza</option>
+                        <option value="hawaiian">Hawaiian Pizza</option>
+                        <option value="spinach">Spinach Pizza</option>
+                        <option value="cheese">Cheese Pizza</option>
+                        <option value="pepperoni">Pepperoni Pizza</option>
+                        <option value="mushroom">Mushroom Pizza</option>
+                        <option value="meat">Meat Pizza</option>
+                        <option value="special">Special Daily Pizza</option>
+                        <option value="mystery">Mystery Pizza</option>
+                      </select>
+
+                    <button class="btn btn-success" onclick="add_boughtitem()">Buy pizza</button>
+
+                </row>
+                
+            </div>
+            
+            <!--<div class="block2">
+                <div id="display_addedmenu">
+                </div>
+            </div>-->        
+        </div>
+
+        <div class="row flex-child" id="viewblock">
+            <div class="img_div"> 
+                <!--<img class="img-responsive" src="" style="width:100%; height:100%;">-->
+            </div>
+            <div class="menu_div">
+                <button id="menu_list" onclick="getmenu()" class="btn btn-success">Show Menu</button>
+            <div id="display_menu" style="width:310px;"></div>
+            </div>
+            
+        </div>       
+
+    </div>
+    <center>
+        <br>
+        <br>
+        <br>
+        <button onclick="showcart()" id="showcartbutton" class="btn btn-success">Show Cart</button>
+        <div id="cart" style="width:320px; background-color:darkgreen;" class="whitetext"></div>
+        <h1 class="whitetext">Reviews</h1>
+        <br>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <h4 class="whitetext">"Totally worth it." - Firestar</h4>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(0, 0, 0)"></span>
+        <h4 class="whitetext">"I bought the 'fresh out of the oven cheese pizza from the website', and to be honest it wasn't really fresh...
+            Otherwise great pizza! You should definetly try it!" - Tawnypelt</h4>
+            <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+            <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+            <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+            <span class="fa fa-star checked" style="color:rgb(0, 0, 0)"></span>
+            <span class="fa fa-star checked" style="color:rgb(0, 0, 0)"></span>
+        <h4 class="whitetext">"The pizza was delicious, but the price is too expensive, even if it's a very big pizza" - Jayfeather</h4>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(0, 0, 0)"></span>
+        <span class="fa fa-star checked" style="color:rgb(0, 0, 0)"></span>
+        <span class="fa fa-star checked" style="color:rgb(0, 0, 0)"></span>
+        <span class="fa fa-star checked" style="color:rgb(0, 0, 0)"></span>
+        <h4 class="whitetext">"I feel scammed. Don't buy this!" - Anonymous_User_123</h4>   
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <h4 class="whitetext">"I don't get why people are complaining. It's delicious!" - Tigerstar</h4> 
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <h4 class="whitetext">"I love it. Anyone who thinks the pizza is bad must have a brain malfunction." - Dovewing</h4>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(235, 200, 113)"></span>
+        <span class="fa fa-star checked" style="color:rgb(0, 0, 0)"></span>
+        <span class="fa fa-star checked" style="color:rgb(0, 0, 0)"></span>
+        <h4 class="whitetext">"The pizza is decent. The price is not." - Ivypool</h4>
+        <div id="review" class="whitetext"></div>
+
+    </center>
+    <div>
+        <!--<img class="img-responsive" src="images/topping.png">-->
+    </div>
+
+
+</body></html>
